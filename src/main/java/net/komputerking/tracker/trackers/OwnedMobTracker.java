@@ -4,6 +4,7 @@ import net.komputerking.tracker.events.PlayerDamageEvent;
 import net.komputerking.tracker.util.MobDamage;
 import net.komputerking.tracker.util.PlayerDamage;
 import net.komputerking.tracker.util.Util;
+
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -12,6 +13,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.inventory.ItemStack;
 
 /**
  * Tracker to detect when a tamed mob attacks a player.
@@ -80,6 +82,11 @@ public class OwnedMobTracker implements Listener {
         public Entity getMob() {
             return entity;
         }
+
+		@Override
+		public ItemStack getUsedItem() {
+			return damager.getItemInHand();
+		}
     }
 
 }

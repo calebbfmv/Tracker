@@ -43,6 +43,14 @@ public class GeneralTracker implements Listener {
             case WITHER:
                 event.setTrackerDamage(new GeneralDamage(event.getPlayer(), event.getDamage(), "Wither", "withered away"));
                 break;
+            case FALLING_BLOCK:
+            	event.setTrackerDamage(new GeneralDamage(event.getPlayer(), event.getDamage(), "FallingBlock", "was crushed by a block"));
+            	break;
+            case ENTITY_EXPLOSION:
+            	event.setTrackerDamage(new GeneralDamage(event.getPlayer(), event.getDamage(), "Explosion", "was blown to bits"));
+            	break;
+            default: 
+            	break;
         }
     }
 

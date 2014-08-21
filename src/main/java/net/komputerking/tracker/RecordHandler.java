@@ -10,21 +10,21 @@ import java.util.*;
  */
 public class RecordHandler {
 
-    private Map<UUID, List<Damage>> damage = new HashMap<>();
+	private Map<UUID, List<Damage>> damage = new HashMap<>();
 
-    public void addDamage(Damage d) {
-        if (d.getDamaged() == null) return;
-        UUID u = d.getDamaged().getUniqueId();
-        if (!damage.containsKey(u)) damage.put(u, new ArrayList<>());
-        damage.get(u).add(d);
-    }
+	public void addDamage(Damage d) {
+		if (d.getDamaged() == null) return;
+		UUID u = d.getDamaged().getUniqueId();
+		if (!damage.containsKey(u)) damage.put(u, new ArrayList<Damage>());
+		damage.get(u).add(d);
+	}
 
-    public void clearRecord(Player p) {
-        damage.remove(p.getUniqueId());
-    }
+	public void clearRecord(Player p) {
+		damage.remove(p.getUniqueId());
+	}
 
-    public List<Damage> getRecord(Player p) {
-        return damage.get(p.getUniqueId());
-    }
+	public List<Damage> getRecord(Player p) {
+		return damage.get(p.getUniqueId());
+	}
 
 }

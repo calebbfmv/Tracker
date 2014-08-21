@@ -1,10 +1,18 @@
 package net.komputerking.tracker;
 
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import net.komputerking.tracker.api.Damage;
 import net.komputerking.tracker.events.PlayerDamageEvent;
-import net.komputerking.tracker.trackers.*;
-import net.komputerking.tracker.util.PlayerDamage;
+import net.komputerking.tracker.trackers.EntityTracker;
+import net.komputerking.tracker.trackers.FallTracker;
+import net.komputerking.tracker.trackers.GeneralTracker;
+import net.komputerking.tracker.trackers.OwnedMobTracker;
+import net.komputerking.tracker.trackers.PVPTracker;
 import net.komputerking.tracker.util.UnknownDamage;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -13,10 +21,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Tracker extends JavaPlugin implements Listener {
 
