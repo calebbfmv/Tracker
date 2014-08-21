@@ -24,17 +24,17 @@ public class UnknownDamage implements Damage {
 
     @Override
     public Player getDamaged() {
-        return null;
+        return damaged;
     }
 
     @Override
     public double getDamage() {
-        return 0;
+        return damage;
     }
 
     @Override
     public String getDeathMessage() {
-        return damaged.getDisplayName() + ChatColor.GRAY + "died";
+        return damaged.getDisplayName() + ChatColor.GRAY + " died";
     }
 
 }

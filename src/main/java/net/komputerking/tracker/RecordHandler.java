@@ -13,6 +13,7 @@ public class RecordHandler {
     private Map<UUID, List<Damage>> damage = new HashMap<>();
 
     public void addDamage(Damage d) {
+        if (d.getDamaged() == null) return;
         UUID u = d.getDamaged().getUniqueId();
         if (!damage.containsKey(u)) damage.put(u, new ArrayList<>());
         damage.get(u).add(d);
