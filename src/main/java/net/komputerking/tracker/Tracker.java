@@ -2,10 +2,7 @@ package net.komputerking.tracker;
 
 import net.komputerking.tracker.api.Damage;
 import net.komputerking.tracker.events.PlayerDamageEvent;
-import net.komputerking.tracker.trackers.EntityTracker;
-import net.komputerking.tracker.trackers.FallTracker;
-import net.komputerking.tracker.trackers.OwnedMobTracker;
-import net.komputerking.tracker.trackers.PVPTracker;
+import net.komputerking.tracker.trackers.*;
 import net.komputerking.tracker.util.PlayerDamage;
 import net.komputerking.tracker.util.UnknownDamage;
 import org.bukkit.Bukkit;
@@ -35,6 +32,7 @@ public class Tracker extends JavaPlugin implements Listener {
         recordHandler = new RecordHandler();
 
         registerListener(this);
+        registerListener(new GeneralTracker());
         registerListener(new PVPTracker());
         registerListener(new EntityTracker());
         registerListener(new FallTracker());
