@@ -2,6 +2,7 @@ package net.komputerking.tracker.trackers;
 
 import net.komputerking.tracker.events.PlayerDamageEvent;
 import net.komputerking.tracker.util.MobDamage;
+import net.komputerking.tracker.util.Util;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -39,7 +40,7 @@ public class EntityTracker implements Listener {
 
         @Override
         public String getDescription() {
-            return entity.getType().getName();
+            return Util.getEntityName(entity);
         }
 
         @Override
@@ -54,7 +55,7 @@ public class EntityTracker implements Listener {
 
         @Override
         public String getDeathMessage() {
-            return damaged.getDisplayName() + ChatColor.GRAY + " was killed by " + ChatColor.GRAY + entity.getType().getName();
+            return damaged.getDisplayName() + ChatColor.GRAY + " was killed by " + ChatColor.WHITE + Util.getEntityName(entity);
         }
 
         @Override

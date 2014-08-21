@@ -53,7 +53,7 @@ public class OwnedMobTracker implements Listener {
 
         @Override
         public String getDescription() {
-            return entity.getType().getName();
+            return Util.getEntityName(entity);
         }
 
         @Override
@@ -73,7 +73,7 @@ public class OwnedMobTracker implements Listener {
 
         @Override
         public String getDeathMessage() {
-            return damaged.getDisplayName() + ChatColor.GRAY + " got too close to " + ChatColor.GRAY + damager.getDisplayName() + Util.getPlural(damager.getDisplayName()) + " " + entity.getType().getName();
+            return damaged.getDisplayName() + ChatColor.GRAY + " got too close to " + ChatColor.GRAY + damager.getDisplayName() + Util.getPlural(damager.getDisplayName()) + " " + Util.getEntityName(entity);
         }
 
         @Override
