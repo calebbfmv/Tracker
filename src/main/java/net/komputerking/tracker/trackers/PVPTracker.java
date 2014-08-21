@@ -1,7 +1,8 @@
 package net.komputerking.tracker.trackers;
 
-import net.komputerking.tracker.api.Damage;
 import net.komputerking.tracker.events.PlayerDamageEvent;
+import net.komputerking.tracker.util.PlayerDamage;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -26,7 +27,7 @@ public class PVPTracker implements Listener {
         }
     }
 
-    public class PVPDamage implements Damage {
+    public class PVPDamage implements PlayerDamage {
 
         private Player damaged;
         private Player damager;
@@ -48,6 +49,7 @@ public class PVPTracker implements Listener {
             return damaged;
         }
 
+        @Override
         public Player getDamager() {
             return damager;
         }
@@ -55,6 +57,11 @@ public class PVPTracker implements Listener {
         @Override
         public double getDamage() {
             return damage;
+        }
+
+        @Override
+        public String getDeathMessage() {
+            return damaged.getDisplayName() + ChatColor.GRAY + " was slain by " + ChatColor.WHITE + damager.getDisplayName();
         }
     }
 

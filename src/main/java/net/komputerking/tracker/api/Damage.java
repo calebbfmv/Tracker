@@ -25,4 +25,10 @@ public interface Damage {
      */
     public double getDamage();
 
+    /**
+     * Gets a message displayed in chat if this damage caused a death.
+     * @return Death message
+     */
+    public String getDeathMessage();
+
 }

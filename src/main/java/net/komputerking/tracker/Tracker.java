@@ -2,7 +2,9 @@ package net.komputerking.tracker;
 
 import net.komputerking.tracker.api.Damage;
 import net.komputerking.tracker.events.PlayerDamageEvent;
+import net.komputerking.tracker.trackers.OwnedMobTracker;
 import net.komputerking.tracker.trackers.PVPTracker;
+import net.komputerking.tracker.util.PlayerDamage;
 import net.komputerking.tracker.util.UnknownDamage;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -30,6 +32,7 @@ public class Tracker extends JavaPlugin implements Listener {
 
         registerListener(this);
         registerListener(new PVPTracker());
+        registerListener(new OwnedMobTracker());
     }
 
     public static Logger logger() {
@@ -65,15 +68,16 @@ public class Tracker extends JavaPlugin implements Listener {
     @EventHandler
     public void onDeath(PlayerDeathEvent event) {
         List<Damage> record = recordHandler.getRecord(event.getEntity());
-        if (record == null) {
+        if (record == null || record.isEmpty()) {
             Bukkit.broadcastMessage("record is empty");
         } else {
             Damage deathCause = record.get(record.size()-1);
             if (deathCause instanceof UnknownDamage) {
                 Bukkit.broadcastMessage("we don't know how they died");
-            } else if (deathCause instanceof PVPTracker.PVPDamage) {
-                PVPTracker.PVPDamage d = (PVPTracker.PVPDamage) deathCause;
+            } else if (deathCause instanceof PlayerDamage) {
+                PlayerDamage d = (PlayerDamage) deathCause;
                 Bukkit.broadcastMessage("they were killed by " + d.getDamager().getName() + " and the last hit took " + d.getDamage() + " health");
+                event.setDeathMessage(d.getDeathMessage());
             }
         }
     }
