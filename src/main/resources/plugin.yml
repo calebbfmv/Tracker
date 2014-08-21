@@ -1,0 +1,5 @@
+name: Tracker
+description: Enhanced death tracking
+version: ${project.version}-${git.commit.id.abbrev}
+author: Komp
+main: net.komputerking.tracker.Tracker
