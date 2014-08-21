@@ -77,6 +77,7 @@ public class Tracker extends JavaPlugin implements Listener {
         if (record != null && !record.isEmpty()) {
             Damage deathCause = record.get(record.size()-1);
             event.setDeathMessage(deathCause.getDeathMessage());
+            recordHandler.clearRecord(event.getEntity());
         }
     }
 
