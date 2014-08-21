@@ -3,6 +3,7 @@ package net.komputerking.tracker;
 import net.komputerking.tracker.api.Damage;
 import net.komputerking.tracker.events.PlayerDamageEvent;
 import net.komputerking.tracker.trackers.EntityTracker;
+import net.komputerking.tracker.trackers.FallTracker;
 import net.komputerking.tracker.trackers.OwnedMobTracker;
 import net.komputerking.tracker.trackers.PVPTracker;
 import net.komputerking.tracker.util.PlayerDamage;
@@ -17,6 +18,7 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Tracker extends JavaPlugin implements Listener {
@@ -35,6 +37,7 @@ public class Tracker extends JavaPlugin implements Listener {
         registerListener(this);
         registerListener(new PVPTracker());
         registerListener(new EntityTracker());
+        registerListener(new FallTracker());
         registerListener(new OwnedMobTracker());
     }
 
@@ -52,6 +55,7 @@ public class Tracker extends JavaPlugin implements Listener {
 
     public void registerListener(Listener l) {
         Bukkit.getPluginManager().registerEvents(l, this);
+        logger.log(Level.INFO, "Registered listener: {0}", l.getClass().getName());
     }
 
     @EventHandler(ignoreCancelled = true)
